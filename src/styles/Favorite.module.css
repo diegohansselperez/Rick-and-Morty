@@ -1,0 +1,12 @@
+.containerFav {
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    background-image: url("../img/space_galaxias.jpg");
+}
+
+.containerFav h2 {
+    margin: 0;
+    padding: 10px 0;
+    color: aliceblue;
+}

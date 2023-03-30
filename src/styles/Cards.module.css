@@ -1,0 +1,19 @@
+.containerCard {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-image: url("../img/space_galaxias.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding-top: 25px;
+}
+
+
+
+h2 {
+    margin: 10px 0;
+}

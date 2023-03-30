@@ -1,0 +1,14 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    height: 100px;
+    background-color: #0c5669;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #72a502;
+}

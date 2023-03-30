@@ -1,0 +1,27 @@
+.containerCard {
+    width: 45%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 15px auto;
+    background-color: transparent;
+    border: 2px solid black;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+}
+
+.containerCard h3 {
+    font-size: 1.5em;
+    margin: 0 0 10px 0;
+}
+
+.containerCard div {
+    text-align: justify;
+}
+
+img {
+    width: 300px;
+    margin: 10px auto;
+    height: auto;
+}

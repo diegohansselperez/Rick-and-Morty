@@ -1,0 +1,54 @@
+.card {
+  display: flex;
+  width: min-content;
+  height: min-content;
+  justify-content: center;
+  padding: 15px;
+  align-items: center;
+  flex-direction: column;
+  background-color: #0c5669;
+  border-radius: 20px;
+}
+
+img {
+  border-radius: 20px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.containStatus,
+h4,
+span {
+  margin: 0;
+  justify-content: center;
+  text-align: center;
+}
+
+.containBtn {
+  width: auto;
+  height: auto;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.containBtn p {
+    font-size: 18px;
+    font-weight: 700;
+    color: #242424;
+}
+
+button {
+  padding: 3px 8px;
+  border: none;
+  border-radius: 8px;
+}
+
+.containBtn button:hover {
+  cursor: pointer;
+  background-color: #72a502;
+}
