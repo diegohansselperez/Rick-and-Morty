@@ -1,14 +1,18 @@
 .navbar {
+    position: absolute;
+    top: 20px;
+    left: 70px;
+    border-radius: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 15px;
-    width: 100%;
+    width: 90%;
     height: 100px;
-    background-color: #0c5669;
+    background-image: radial-gradient(circle, #ac3084, #b52f81, #bd2f7e, #c5307b, #cd3177, #d53373, #dc376e, #e33b69, #eb4361, #f24d5a, #f75751, #fb6249);
+    
 }
+
 
 button:hover {
     cursor: pointer;
-    background-color: #72a502;
 }

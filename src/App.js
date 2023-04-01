@@ -36,7 +36,7 @@ function App() {
 
   //creamos una condicion, si pathname es diferente a "/" entonces que muestre el Nav, en caso contrario que siga con routes y recargue el Form como principal.
   return (
-    <div className="App">
+    <>
       {location.pathname !== "/" && <Nav onSearch={onSearch} />}
       <Routes>
         <Route
@@ -52,7 +52,7 @@ function App() {
         <Route path="/favorites" element={<Favorites onClose={onClose} />} />
         <Route path="/detail/:detailId" element={<Detail />} />
       </Routes>
-    </div>
+    </>
   );
 }
 

@@ -37,9 +37,9 @@ span {
 }
 
 .containBtn p {
-    font-size: 18px;
-    font-weight: 700;
-    color: #242424;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
 }
 
 button {
@@ -50,5 +50,4 @@ button {
 
 .containBtn button:hover {
   cursor: pointer;
-  background-color: #72a502;
 }

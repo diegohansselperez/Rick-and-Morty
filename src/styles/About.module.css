@@ -1,5 +1,6 @@
 .containerCard {
     width: 45%;
+    position: relative;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -9,7 +10,7 @@
     justify-content: center;
     text-align: center;
     padding: 15px;
-}
+    top: 140px;}
 
 .containerCard h3 {
     font-size: 1.5em;

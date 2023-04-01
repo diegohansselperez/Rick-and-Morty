@@ -5,33 +5,40 @@ import { NavLink } from "react-router-dom";
 
 export const Nav = (props) => {
   return (
-    <nav className="navbar">
-      <NavLink to="/favorites">
-        <button
+    <>
+      <nav className="navbar">
+        <NavLink
           style={{
             padding: "5px 6px",
             borderRadius: "5px",
-            backgroundcolor: "#81bc02",
           }}
+          to="/favorites"
         >
-          Favorites
-        </button>
-      </NavLink>{" "}
-      <NavLink to="/about">
-        <button  style={{
+          <button>Favorites</button>
+        </NavLink>{" "}
+        <NavLink
+          style={{
             padding: "5px 6px",
             borderRadius: "5px",
-            backgroundcolor: "#81bc02",
-          }} >About</button>
-      </NavLink>
-      <NavLink to="/home">
-        <button  style={{
+          }}
+          to="/about"
+        >
+          <button>About</button>
+        </NavLink>
+        <NavLink
+          style={{
             padding: "5px 6px",
             borderRadius: "5px",
-            backgroundcolor: "#81bc02",
-          }} >Home</button>
-      </NavLink>
-      <SearchBar onSearch={props.onSearch} />
-    </nav>
+          }}
+          to="/home"
+        >
+          <button>Home</button>
+        </NavLink>
+        <SearchBar
+          style={{ borderRadius: "5px", border: "none" , padding:"3px 4px"}}
+          onSearch={props.onSearch}
+        />
+      </nav>
+    </>
   );
 };

@@ -1,17 +1,13 @@
 .inputSearch {
   width: fit-content;
+  align-items: center;
   display: flex;
   gap: 15px;
 }
 
 input {
-  padding: 5px 6px;
   border-radius: 5px;
   border: none;
-}
-
-button {
-  padding: 5px 6px;
-  border-radius: 5px;
-  background-color: #81bc02;
+  background-color: rgb(0, 0, 0, 0.5);
+  color: white;
 }

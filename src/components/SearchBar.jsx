@@ -1,23 +1,25 @@
 import { useState } from "react";
-import "../styles/SearchBar.modules.css"
+import "../styles/SearchBar.modules.css";
 
+export default function SearchBar({ onSearch }) {
+  const [id, setId] = useState(0);
 
-export default function SearchBar({onSearch}) {
-const [id, setId] = useState("")
+  const handelChange = (event) => {
+    setId(event.target.value);
+  };
 
-const handelChange = (event) => {
-   setId(event.target.value)
-}
+  //   const numRandom = Math.round(Math.random() * 826);
 
-const numRandom = Math.round(Math.random() * 826)
-
-   return (
-      <div className="inputSearch">
-         <input type='search' onChange={handelChange} placeholder="Agregar un personaje" />
-         <button onClick={() => onSearch(id)}>Agregar</button>
-         <button onClick={() => onSearch(numRandom)}>Random</button>
-      </div>
-   );
+  return (
+    <div className="inputSearch">
+      {" "}
+      {/* <button onClick={() => onSearch(numRandom)}>Random</button> */}
+      <input type="search" onChange={handelChange} placeholder="Agrega un ID" />
+      <button  onClick={() => onSearch(id)}>
+        Agregar
+      </button>
+    </div>
+  );
 }
 
 //! No ejecutar el llamdo a una funcion en el onClick ya que no se puede ejecutar un llamado con un id
