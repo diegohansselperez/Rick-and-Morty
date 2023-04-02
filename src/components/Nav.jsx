@@ -8,34 +8,25 @@ export const Nav = (props) => {
     <>
       <nav className="navbar">
         <NavLink
-          style={{
-            padding: "5px 6px",
-            borderRadius: "5px",
-          }}
+            style={{textDecoration:"none"}}
           to="/favorites"
         >
-          <button>Favorites</button>
+          <button className="btnNav">Favorites</button>
         </NavLink>{" "}
         <NavLink
-          style={{
-            padding: "5px 6px",
-            borderRadius: "5px",
-          }}
+            style={{textDecoration:"none"}}
           to="/about"
         >
-          <button>About</button>
+          <button className="btnNav">About</button>
         </NavLink>
         <NavLink
-          style={{
-            padding: "5px 6px",
-            borderRadius: "5px",
-          }}
+        style={{textDecoration:"none"}}
           to="/home"
         >
-          <button>Home</button>
+          <button className="btnNav">Home</button>
         </NavLink>
         <SearchBar
-          style={{ borderRadius: "5px", border: "none" , padding:"3px 4px"}}
+          // style={{ borderRadius: "5px", border: "none" , padding:"3px 4px"}}
           onSearch={props.onSearch}
         />
       </nav>

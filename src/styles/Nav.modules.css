@@ -1,18 +1,27 @@
 .navbar {
-    position: absolute;
-    top: 20px;
-    left: 70px;
-    border-radius: 20px;
+  position: absolute;
+  top: 20px;
+  left: 70px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 90%;
+  height: 100px;
+  background-color: rgb(0, 0, 0, 0.6);
+}
+
+.btnNav {
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    width: 90%;
-    height: 100px;
-    background-image: radial-gradient(circle, #ac3084, #b52f81, #bd2f7e, #c5307b, #cd3177, #d53373, #dc376e, #e33b69, #eb4361, #f24d5a, #f75751, #fb6249);
-    
+    background-color: #FF756D;
+    padding: 10px;
+    font-size: 15px;
+    color: white;
 }
 
-
-button:hover {
+.btnNav:hover {
     cursor: pointer;
-}
+    background-color: rgb(255, 117, 109, 0.8);
+    box-shadow: 0px 0px 4px 2px #FF756D;
+  }

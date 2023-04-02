@@ -31,13 +31,12 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!validate) {
+    
       setUserData({
         email: "",
         password: "",
       });
       navigate("/home");
-    }
   };
 
   return (
@@ -65,7 +64,7 @@ const Form = () => {
           />
           <span className="danger">{errors.password}</span>
 
-          <button type="submit">ENVIAR</button>
+          <button className="btnForm" type="submit">ENVIAR</button>
         </div>
       </form>
     </div>

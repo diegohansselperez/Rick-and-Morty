@@ -15,7 +15,7 @@ export default function SearchBar({ onSearch }) {
       {" "}
       {/* <button onClick={() => onSearch(numRandom)}>Random</button> */}
       <input type="search" onChange={handelChange} placeholder="Agrega un ID" />
-      <button  onClick={() => onSearch(id)}>
+      <button className="btnSearch" onClick={() => onSearch(id)}>
         Agregar
       </button>
     </div>

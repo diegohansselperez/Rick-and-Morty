@@ -3,7 +3,7 @@
     height: auto;
     min-height: 100vh;
     display: flex;
-    background-color: darkslateblue;
+    background-image: linear-gradient(to bottom, #ff756d, #ff8e69, #ffa76a, #ffbf71, #ffd680, #ffda89, #ffde92, #ffe29b, #ffd69d, #ffcaa3, #ffc1ab, #ffb9b3);
     flex-wrap: wrap;
     justify-content: center;
     gap: 25px;

@@ -2,7 +2,9 @@ const validation = (userData) => {
   const regexEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
   const errors = {};
 
-  if (!regexEmail.test(userData.email)) {
+  if (userData.email.length === 0) {
+    errors.password = "";
+  } else if (!regexEmail.test(userData.email)) {
     errors.email = "El nombre de usuario tiene que ser un email";
   } else if (!userData.email) {
     errors.email = "El nombre de usuario no puede estar vacio";
