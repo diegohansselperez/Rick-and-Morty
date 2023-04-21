@@ -1,4 +1,4 @@
-import { ADD_FAV, REMOVE_FAV, ORDER, FILTER } from "./types";
+import { ADD_FAV, REMOVE_FAV, ORDER, FILTER , RESET} from "./types";
 
 const initialState = {
   allCharacters: [],
@@ -22,23 +22,27 @@ const rootReducer = (state = initialState, action) => {
         ),
       };
 
-      case FILTER:
-        const chartFilters = state.allCharacters.filter(element => {
-          return element.gender === action.payload;
-        })
-        return {
-          ...state,
-          myFavorites: chartFilters,
-        }
+    case FILTER:
+      const chartFilters = state.allCharacters.filter((element) => {
+        return element.gender === action.payload;
+      });
+      return {
+        ...state,
+        myFavorites: chartFilters,
+      };
 
-        case ORDER:
-          return {
-            ...state,
-            myFavorites: 
-            action.payload === "Ascendente" 
-            ? state.allCharacters.sort((a,b) => a.id - b.id) : state.allCharacters.sort((a,b) => b.id - a.id) 
-          }
-          
+    case ORDER:
+      const newOrder =
+        action.payload === "Ascendente"
+          ? state.allCharacters.sort((a, b) => a.id - b.id)
+          : state.allCharacters.sort((a, b) => b.id - a.id);
+      return {
+        ...state,
+        myFavorites: newOrder,
+      };
+    case RESET:
+      return { ...state, myFavorites:[] };
+
     default:
       return state;
   }

@@ -1,20 +1,9 @@
-const http = require("http");
-//const characters = require("../src/routes/data");
-const getCharById = require("./controllers/getCharById");
-const getCharDetail = require("./controllers/getCharDetail.js");
-//const axios = require("axios")
+const app = require("./app");
 
-http
-  .createServer((req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    let id = req.url.split("/").at(-1);
+const PORT = 3001;
 
-    if (req.url.includes(`characters`)) {
-      getCharById(res, id);
-    }
+app.listen(PORT, () => {
+  console.log("Server raised in port: " + PORT);
+});
 
-    if (req.url.includes(`details`)) {
-      getCharDetail(res, id);
-    }
-  })
-  .listen(3001, "localhost");
+

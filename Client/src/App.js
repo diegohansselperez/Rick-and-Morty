@@ -1,19 +1,26 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import Cards from "./components/Cards";
 import { Nav } from "./components/Nav.jsx";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import About from "./components/About.jsx";
 import Detail from "./components/Detail.jsx";
 import Form from "./components/Form.jsx";
 import Favorites from "./components/Favorites.jsx";
+ 
+import axios from "axios"
+
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const [access, setAccess] = useState(false);
+
 
   const location = useLocation();
 
+  const navigate = useNavigate() 
+
   const onSearch = (id) => {
-    fetch(`http://localhost:3001/rickandmorty/characters/${id}`)
+    fetch(`http://localhost:3001/rickandmorty/character/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.name && !characters.find((person) => person.id === data.id)) {
@@ -29,16 +36,34 @@ function App() {
       });
   };
 
+  function loginForm(userData) {
+    axios.get(`http://localhost:3001/rickandmorty/login?password=${userData.password}&email=${userData.email}`)
+      .then(({ data }) => {
+         //console.log(":::::::::", data.access);
+        if (data.access) {
+          setAccess(data.access);
+          navigate("/home");
+        } else {
+          return alert("invalid user");
+        }
+      });
+  }
+//evita que saltes del login a travez del home, es un tipo de seguridad para no saltarte el login y solo un usuario puede entrar
+
+  useEffect(() => {
+    !access && navigate("/");
+  }, [navigate, access]);
+
   const onClose = (id) => {
     setCharacters(characters.filter((pers) => pers.id !== id));
-  };
+  }; 
 
   //creamos una condicion, si pathname es diferente a "/" entonces que muestre el Nav, en caso contrario que siga con routes y recargue el Form como principal.
   return (
     <>
       {location.pathname !== "/" && <Nav onSearch={onSearch} />}
       <Routes>
-        <Route exact path="/" element={<Form />} />
+        <Route exact path="/" element={<Form loginForm={loginForm}/>} />
         <Route
           path="/home"
           element={<Cards characters={characters} onClose={onClose} />}

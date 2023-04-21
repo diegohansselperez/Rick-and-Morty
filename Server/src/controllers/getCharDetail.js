@@ -1,26 +1,33 @@
-const axios = require("axios")
+const axios = require("axios");
 
-const getCharDetail = (res, id) => {
-    axios(`https://rickandmortyapi.com/api/character/${id}`)
-    .then((response) => {
-      let data = response.data;
+const getCharDetail = (req, res) => {
+  const { id } = req.params;
+  try {
+    axios(`https://rickandmortyapi.com/api/character/${id}`).then(
+      (response) => {
+        let data = response.data;
 
-      let objData = {
-        id: data.id,
-        name: data.name,
-        gender: data.gender,
-        origin: data.origin.name,
-        image: data.image,
-        status: data.status,
-      };
+        if (data) {
+          let objData = {
+            id: data.id,
+            name: data.name,
+            gender: data.gender,
+            species: data.species,
+            origin: data.origin.name,
+            image: data.image,
+            status: data.status,
+          };
 
-      res.writeHead(500, { "Content-Type": "application/json" });
-      res.end(JSON.stringify(objData));
-    })
-    .catch((error) => {
-      res.writeHead(500, { "Content-Type": "text/plain" });
-      res.end(`Error: ${error.message}`);
-    });
-}
+          return res.status(200).json(objData);
+        } else {
+          
+          res.status(500).json({ Error: "El personaje No existe" });
+        }
+      }
+    );
+  } catch (error) {
+    res.status(500).json({ Error: error.message });
+  }
+};
 
-module.exports= getCharDetail
+module.exports = { getCharDetail };

@@ -1,12 +1,32 @@
 .containerFav {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     text-align: center;
-    background-image: url("../img/space_galaxias.jpg");
+    background-image: url("../img/mashup-wallpaper-taken-from-4.jpeg");
+    background-position: center;
+    padding-top: 130px;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.containerBtns {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .containerFav h2 {
     margin: 0;
     padding: 10px 0;
     color: aliceblue;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }

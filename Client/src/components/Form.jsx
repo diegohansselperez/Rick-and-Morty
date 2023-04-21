@@ -1,9 +1,9 @@
 import React from "react";
 import validate from "./validation.js";
 import "../styles/Form.mudules.css";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
-const Form = () => {
+const Form = ({ loginForm }) => {
   const [userData, setUserData] = React.useState({
     email: "",
     password: "",
@@ -13,13 +13,14 @@ const Form = () => {
     password: "",
   });
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const handleChange = (event) => {
     setUserData({
       ...userData,
       [event.target.name]: event.target.value,
     });
+
 
     setErrors(
       validate({
@@ -31,15 +32,21 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
+    let aux = Object.keys(errors);
+    if (aux.length === 0) {
+      loginForm(userData)
       setUserData({
         email: "",
         password: "",
       });
-      navigate("/home");
+    }
+
+    //navigate("/home");
   };
 
   return (
+    
     <div className="containerForm">
       <form onSubmit={handleSubmit}>
         {" "}
@@ -64,7 +71,9 @@ const Form = () => {
           />
           <span className="danger">{errors.password}</span>
 
-          <button className="btnForm" type="submit">ENVIAR</button>
+          <button className="btnForm" type="submit">
+            ENVIAR
+          </button>
         </div>
       </form>
     </div>
