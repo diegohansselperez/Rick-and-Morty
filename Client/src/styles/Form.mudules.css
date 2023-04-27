@@ -43,13 +43,15 @@ label {
   margin-right: 10px;
 }
 
-input {
+.input_login {
   width: 80%;
   padding: 5px;
   margin: 5px;
   border-radius: 5px;
   border: none;
-  /* border: 1px solid #ccc; */
+  color: white;
+  background-color: #0d131d;
+  border: 1px solid rgb(170, 6, 6);
 }
 
 .btnForm {

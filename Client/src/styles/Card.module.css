@@ -6,27 +6,48 @@
   padding: 15px;
   align-items: center;
   flex-direction: column;
-  background-color: #0c5669;
+  background-color: rgb(0, 0, 0, 0.7);
   border-radius: 20px;
+}
+
+.name {
+  color: #dfd00a;
 }
 
 img {
   border-radius: 20px;
 }
-
-p {
-  margin: 0;
-  padding: 0;
+.btns_Top_Detail{
+  display: flex;
+  gap: 10px;
+  padding-bottom: 10px;
 }
 
-.containStatus,
-h4,
-span {
-  margin: 0;
-  justify-content: center;
-  text-align: center;
-  color: black;
+.btnFavorite{
+  background-color: black;
+  padding: 9px 7px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
+
+.btnDelete {
+  padding: 7px 7px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background-image: linear-gradient(to bottom, #ce192b, #9a142d, #671527, #36121b, #000000);
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  cursor: pointer;
+}
+
+.btnDelete:hover {
+  background-image: linear-gradient(to bottom, #ac1524, #821326, #571322, #2e1017, #000000);
+}
+
+
 
 .containBtn {
   width: auto;
@@ -37,18 +58,23 @@ span {
   align-items: center;
 }
 
-.containBtn p {
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.btnDetail {
+  padding: 3px 8px;
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: transparent;
+  cursor: pointer;
   font-size: 18px;
   font-weight: 700;
   color: white;
 }
 
-button {
-  padding: 3px 8px;
-  border: none;
-  border-radius: 8px;
-}
-
-.containBtn button:hover {
-  cursor: pointer;
+.btnDetail:hover {
+  background-color: rgb(0, 0, 0, 0.6);
+  box-shadow: 0 0 9px black;
 }

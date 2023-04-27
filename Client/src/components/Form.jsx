@@ -21,7 +21,6 @@ const Form = ({ loginForm }) => {
       [event.target.name]: event.target.value,
     });
 
-
     setErrors(
       validate({
         ...errors,
@@ -35,7 +34,7 @@ const Form = ({ loginForm }) => {
 
     let aux = Object.keys(errors);
     if (aux.length === 0) {
-      loginForm(userData)
+      loginForm(userData);
       setUserData({
         email: "",
         password: "",
@@ -46,13 +45,13 @@ const Form = ({ loginForm }) => {
   };
 
   return (
-    
     <div className="containerForm">
       <form onSubmit={handleSubmit}>
         {" "}
         <div className="container">
           <label>Email: </label>
           <input
+            className="input_login"
             type="text"
             placeholder="Write your email here..."
             name="email"
@@ -63,6 +62,7 @@ const Form = ({ loginForm }) => {
 
           <label>Password: </label>
           <input
+            className="input_login"
             type="text"
             placeholder="Enter your password here..."
             name="password"

@@ -5,8 +5,7 @@ import { addFav, removeFav } from "../redux/actions";
 import { useState, useEffect } from "react";
 
 function Card(props) {
-  const { myFavorites, id, name, image, status, onClose, removeFav, addFav } =
-    props;
+  const { myFavorites, id, name, image, onClose, removeFav, addFav } = props;
 
   const [isFav, setIsFav] = useState(false);
 
@@ -22,45 +21,37 @@ function Card(props) {
 
   useEffect(() => {
     myFavorites.forEach((fav) => {
-      if (fav.id === props.id) {
+      if (fav.id === id) {
         setIsFav(true);
       }
     });
-  }, [myFavorites, props.id]);
+  }, [myFavorites, id]);
 
   return (
     <div className={style.card} key={id}>
-      <div>
+      <div className={style.btns_Top_Detail}>
         {" "}
         {isFav ? (
-          <button
-            style={{ backgroundColor: "#242424", padding: "5px 5px"  }}
-            onClick={handleFavorite}
-          >
+          <button className={style.btnFavorite} onClick={handleFavorite}>
             ❤️
           </button>
         ) : (
           <button
-            style={{ backgroundColor: "#242424", padding: "5px 5px"  }}
+            className={style.btnFavorite}
             onClick={handleFavorite}
           >
             🤍
           </button>
         )}
-        <button style={{padding:"5px 5px" }} onClick={() => onClose(id)}>X</button>
+        <button className={style.btnDelete} onClick={() => onClose(id)}>
+          X
+        </button>
       </div>
       <img src={image} alt={name} />
-      <h2>{name}</h2>
-
+      <h2 className={style.name}>{name}</h2>
       <div className={style.containBtn}>
-        <div className={style.containStatus}>
-          <span>Status: </span>
-          <h4>{status}</h4>
-        </div>{" "}
         <Link to={`/detail/${id}`}>
-          <button>
-            <p>Detail Card</p>
-          </button>
+          <button className={style.btnDetail}>Detail Card</button>
         </Link>
       </div>
     </div>

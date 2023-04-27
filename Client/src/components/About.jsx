@@ -1,13 +1,13 @@
 import style from "../styles/About.module.css";
-import rick_and_morty from "../img/RickyMorty.jpg"
+import rick_and_morty from "../img/RickyMorty.jpg";
 
 const About = () => {
   return (
     <div className={style.containerCard}>
       <h3>Rick and Morty</h3>
-      <img src={rick_and_morty} alt="Rick_y_Morty_Serie_de_TV"/>
-      <div>
-        {" "}
+
+      <div className={style.contain_img_text}>
+        <img src={rick_and_morty} alt="Rick_y_Morty_Serie_de_TV" />{" "}
         <p>
           Rick and Morty es una serie animada de ciencia ficción y comedia para
           adultos, creada por Justin Roiland y Dan Harmon. La trama sigue las

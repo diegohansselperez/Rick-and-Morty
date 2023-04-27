@@ -11,10 +11,10 @@ export default function SearchBar({ onSearch }) {
   //   const numRandom = Math.round(Math.random() * 826);
 
   return (
-    <div className="inputSearch">
+    <div className="containSearch">
       {" "}
       {/* <button onClick={() => onSearch(numRandom)}>Random</button> */}
-      <input type="search" onChange={handelChange} placeholder="Agrega un ID" />
+      <input className="inputSearch" type="search" onChange={handelChange} placeholder="Agrega un ID" />
       <button className="btnSearch" onClick={() => onSearch(id)}>
         Agregar
       </button>
