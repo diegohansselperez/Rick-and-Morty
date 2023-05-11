@@ -1,6 +1,6 @@
-
-const EMAIL_LOGIN = "diegohansselp24@gmail.com";
-const PASSWORD_LOGIN = "@solorick24";
+const { EMAIL_LOGIN, PASSWORD_LOGIN } = require("../utils/users");
+// const EMAIL_LOGIN = "diegohansselp24@gmail.com";
+// const PASSWORD_LOGIN = "@solorick24";
 
 const STATUS_OK = 200;
 const STATUS_ERROR = 404;

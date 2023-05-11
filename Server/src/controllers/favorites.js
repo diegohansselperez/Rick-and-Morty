@@ -5,7 +5,7 @@ let favoritesChar = [];
 
 const postFav = (req, res) => {
   try {
-    const { id, name, image, status, species, origin } = req.body;
+    const { id, name, image, status, species, origin, gender } = req.body;
     // if (!id || !name || !image) {
     //   return res.status(STATUS_ERROR).send("Error: id not found");
     // }
@@ -18,6 +18,7 @@ const postFav = (req, res) => {
       id,
       name,
       image,
+      gender,
       status,
       species,
       origin,
@@ -38,7 +39,7 @@ const deleteFav = (req, res) => {
       return res.status(STATUS_ERROR).send("Error: id not found");
     }
 
-    favoritesChar.filter((char) => char.id !== Number(id));
+    favoritesChar.filter((char) => char.id !== +id);
 
     res.status(STATUS_OK).json(favoritesChar);
   } catch (error) {
