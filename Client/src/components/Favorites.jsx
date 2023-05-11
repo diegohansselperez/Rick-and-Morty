@@ -62,7 +62,7 @@ export default function Favorites(props) {
       </div>
       <main >
         {" "}
-        {myFavorites?.map((element, index) => {
+        {myFavorites && myFavorites.map((element) => {
           return (
             <Card
               key={element.id}

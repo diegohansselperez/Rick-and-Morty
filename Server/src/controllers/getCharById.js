@@ -4,33 +4,34 @@ const URL = "https://rickandmortyapi.com/api/character";
 
 const STATUS_OK = 200;
 const STATUS_ERROR = 404;
-const EMAIL_LOGIN = "diegohansselp24@gmail.com";
-const PASSWORD_LOGIN = "@solorick24"
+// const EMAIL_LOGIN = "diegohansselp24@gmail.com";
+// const PASSWORD_LOGIN = "@solorick24";
 
-const getCharById = (req, res) => {
-  const { id } = req.params;
-
+const getCharById = async (req, res) => {
   try {
-    axios.get(`${URL}/${id}`).then(({ data }) => {
-      if (data) {
-        const character = {
-          id: data.id,
-          name: data.name,
-          status: data.status,
-          species: data.species,
-          origin: data.origin?.name,
-          image: data.image,
-          gender: data.gender,
-        };
-        return res.status(STATUS_OK).json(character);
-      } else {
-        return res
-          .status(STATUS_ERROR)
-          .send("Error: No se encontro el personaje");
-      }
-    });
+    const { id } = req.params;
+    const { data } = await axios.get(`${URL}/${id}`);
+
+    if (!data.name) {
+      throw new Error(`ID: ${id} is not faund`);
+    }
+    if (data.name) {
+      const character = {
+        id: data.id,
+        name: data.name,
+        status: data.status,
+        species: data.species,
+        origin: data.origin,
+        image: data.image,
+        gender: data.gender,
+      };
+      
+      return res.status(STATUS_OK).json(character);
+    }
   } catch (error) {
-    res.status(500).json(error.message);
+    return error.message.includes("ID")
+      ? res.status(STATUS_ERROR).send(error.message)
+      : res.status(500).send(error.response.data.error);
   }
 };
 

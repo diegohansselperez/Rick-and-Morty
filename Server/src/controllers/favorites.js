@@ -3,13 +3,16 @@ const STATUS_ERROR = 404;
 
 let favoritesChar = [];
 
-const addFav = (req, res) => {
-  const { id, name, image, status, species, origin } = req.body;
-
+const postFav = (req, res) => {
   try {
-    if (!id || !name || !image) {
-      return res.status(STATUS_ERROR).send("Error: id not found");
-    }
+    const { id, name, image, status, species, origin } = req.body;
+    // if (!id || !name || !image) {
+    //   return res.status(STATUS_ERROR).send("Error: id not found");
+    // }
+
+    let characterFilter = favoritesChar.find((fav) => fav.id === id);
+
+    if (characterFilter) throw Error("el personaje ya existe en favoritos");
 
     const character = {
       id,
@@ -28,18 +31,14 @@ const addFav = (req, res) => {
   }
 };
 
-
 const deleteFav = (req, res) => {
-  const { id } = req.params;
-
   try {
+    const { id } = req.params;
     if (!id) {
       return res.status(STATUS_ERROR).send("Error: id not found");
     }
 
-    const charFilters = favoritesChar.filter((char) => char.id !== Number(id));
-
-    favoritesChar = charFilters;
+    favoritesChar.filter((char) => char.id !== Number(id));
 
     res.status(STATUS_OK).json(favoritesChar);
   } catch (error) {
@@ -48,6 +47,6 @@ const deleteFav = (req, res) => {
 };
 
 module.exports = {
-  addFav,
+  postFav,
   deleteFav,
 };

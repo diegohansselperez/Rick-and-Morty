@@ -2,22 +2,30 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/Detail.modules.css";
 import Loading from "../hook/loading";
+import axios from "axios";
 
 const Detail = () => {
   const [detail, setDetail] = useState({});
   const { detailId } = useParams();
 
+  const getDetail = async (id) => {
+    try {
+      const { data } = await axios.get(
+        `http://localhost:3001/rickandmorty/character/detail/${id}`
+      );
+
+      if (data.name) {
+        setDetail(data);
+      } else {
+        window.alert("No se encontro el ID");
+      }
+    } catch (error) {
+      console.log("Error detail axios: " + error.message);
+    }
+  };
+
   useEffect(() => {
-    fetch(`http://localhost:3001/rickandmorty/character/detail/${detailId}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.name) {
-          setDetail(data);
-        } else {
-          window.alert("No se encontro el ID");
-        }
-      });
-    return () => setDetail({});
+    getDetail(detailId);
   }, [detailId]);
 
   return (

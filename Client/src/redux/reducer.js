@@ -1,4 +1,4 @@
-import { ADD_FAV, REMOVE_FAV, ORDER, FILTER , RESET} from "./types";
+import { ADD_FAV, REMOVE_FAV, ORDER, FILTER, RESET } from "./types";
 
 const initialState = {
   allCharacters: [],
@@ -10,25 +10,21 @@ const rootReducer = (state = initialState, action) => {
     case ADD_FAV:
       return {
         ...state,
-        myFavorites: [...state.myFavorites, action.payload],
-        allCharacters: [...state.allCharacters, action.payload],
+        myFavorites: action.payload,
+        allCharacters: action.payload,
       };
 
     case REMOVE_FAV:
       return {
         ...state,
-        myFavorites: state.myFavorites.filter(
-          (fav) => fav.id !== action.payload
-        ),
+        myFavorites: action.payload,
       };
 
     case FILTER:
-      const chartFilters = state.allCharacters.filter((element) => {
-        return element.gender === action.payload;
-      });
+      //const chartFilters = state.allCharacters.filter((element) => {return element.gender === action.payload });
       return {
         ...state,
-        myFavorites: chartFilters,
+        myFavorites: state.allCharacters.filter((element) => {return element.gender === action.payload }),
       };
 
     case ORDER:
@@ -40,8 +36,9 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         myFavorites: newOrder,
       };
+
     case RESET:
-      return { ...state, myFavorites:[] };
+      return { ...state, myFavorites: []};
 
     default:
       return state;

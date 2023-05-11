@@ -1,10 +1,11 @@
 const express = require("express");
-
+const nocache = require('nocache');
 const app = express();
-const logger = require("morgan");
+const morgan = require("morgan");
 
 app.use(express.json());
 
+app.use(nocache());
 
 const router = require("./routes/index");
 
@@ -21,7 +22,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(logger("dev"));
+app.use(morgan("dev"));
 
 app.use("/rickandmorty", router);
 
