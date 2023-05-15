@@ -21,10 +21,10 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case FILTER:
-      //const chartFilters = state.allCharacters.filter((element) => {return element.gender === action.payload });
+      const chartFilters = state.allCharacters.filter((element) => element.gender === action.payload );
       return {
         ...state,
-        myFavorites: state.allCharacters.filter((element) => {return element.gender === action.payload }),
+        myFavorites: chartFilters,
       };
 
     case ORDER:

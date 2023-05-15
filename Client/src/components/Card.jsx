@@ -16,9 +16,10 @@ function Card(props) {
   const dispatch = useDispatch();
 
   const handleFavorite = () => {
-    if (isFav) {
-      dispatch(removeFav(id));
+    if (isFav) { 
       setIsFav(false);
+      dispatch(removeFav(id));
+     
     } else {
       dispatch(addFav(props));
       setIsFav(true);
@@ -29,9 +30,7 @@ function Card(props) {
     myFavorites.forEach((fav) => {
       if(fav.id === id) {
         setIsFav(true);
-        return true;
       }
-      return false;
     })
   }, [myFavorites, id]);
 
