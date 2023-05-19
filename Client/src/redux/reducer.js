@@ -42,6 +42,7 @@ const rootReducer = (state = initialState, action) => {
         myFavorites: newCharacter,
         myFavoritesOrigin: newCharacter,
       };
+      
 /********************* Reducer para la parte de Favorites ****************************/
     case ADD_FAV:
       return {
