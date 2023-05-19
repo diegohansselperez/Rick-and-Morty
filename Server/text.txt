@@ -1,0 +1,1 @@
+deleteFav agregar  const user = await Favorites.findByPk(id) y await user.destry() 

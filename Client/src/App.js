@@ -8,18 +8,16 @@ import Form from "./components/Form.jsx";
 import Favorites from "./components/Favorites.jsx";
 
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { addCharacters, searchCharacter } from "./redux/actions";
+//import { useSelector } from "react-redux";
+//import { addCharacters, searchCharacter } from "./redux/actions";
 
 function App() {
-  //const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useState([]);
   const [access, setAccess] = useState(false);
 
   const location = useLocation();
 
-  const dispatch = useDispatch();
-
-  const { allCharacters } = useSelector((state) => state);
+ // const { allCharacters } = useSelector((state) => state);
 
   const navigate = useNavigate();
 
@@ -31,11 +29,10 @@ function App() {
 
       console.log("onSearch", data);
 
-      if(data.name && !allCharacters.find((person) => person.id === data.id)) {
-        //setCharacters((oldCharts) => [...oldCharts, data]);
-        dispatch(searchCharacter(data));
+      if(data.name && !characters.find((person) => person.id === data.id)) {
+        setCharacters((oldCharts) => [...oldCharts, data]);
       } else {
-        if (allCharacters.find((person) => person.id === data.id)) {
+        if (characters.find((person) => person.id === data.id)) {
           return window.alert("un elemento ya esta añadido");
         } else {
           window.alert("No se encontro el ID");
@@ -69,9 +66,9 @@ function App() {
   }, [navigate, access]);
 
   const onClose = (id) => {
-    //setCharacters(characters.filter((pers) => pers.id !== id));
-    const filterCharacters = allCharacters.filter((char) => char.id !== id)
-    dispatch(addCharacters(filterCharacters))
+    setCharacters(characters.filter((pers) => pers.id !== id));
+    // const filterCharacters = allCharacters.filter((char) => char.id !== id)
+    // dispatch(addCharacters(filterCharacters))
   };
 
   //creamos una condicion, si pathname es diferente a "/" entonces que muestre el Nav, en caso contrario que siga con routes y recargue el Form como principal.
@@ -82,7 +79,7 @@ function App() {
         <Route exact path="/" element={<Form loginForm={loginForm} />} />
         <Route
           path="/home"
-          element={<Cards characters={allCharacters} onClose={onClose} />}
+          element={<Cards characters={characters} onClose={onClose} />}
         />
         <Route path="/about" element={<About />} />
         <Route path="/favorites" element={<Favorites onClose={onClose} />} />

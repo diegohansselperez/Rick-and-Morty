@@ -20,8 +20,8 @@ function Card(props) {
       setIsFav(false);
       dispatch(removeFav(id));
     } else {
-      dispatch(addFav(props));
       setIsFav(true);
+      dispatch(addFav(props));
     }
   };
 
@@ -51,7 +51,7 @@ function Card(props) {
             🤍
           </button>
         )}
-        <button className={style.btnDelete} onClick={() => superClouse}>
+        <button className={style.btnDelete} onClick={ superClouse}>
           X
         </button>
       </div>

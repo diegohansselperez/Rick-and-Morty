@@ -8,13 +8,13 @@ import {
 import style from "../styles/Favorite.module.css";
 
 export default function Favorites(props) {
-  const { onClose } = props;
+  //const { onClose } = props;
 
   const { myFavorites } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   function removeFavorite(id) {
-    onClose(id);
+    //onClose(id);
     dispatch(removeFav(id));
   }
 

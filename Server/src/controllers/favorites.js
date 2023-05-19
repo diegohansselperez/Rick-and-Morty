@@ -36,9 +36,12 @@ const deleteFav = (req, res) => {
       return res.status(STATUS_ERROR).send("Error: id not found");
     }
 
-    const newFavorites = favoritesChar.filter((char) => char.id !== Number(id));
-
-    res.status(STATUS_OK).json(newFavorites);
+    const newFavorites = favoritesChar.filter((char) => char.id !== parseInt(id));
+    
+    //! NOTA : recuerda asignarlo de nuevo al array principal lo que filtraste
+    favoritesChar = newFavorites;
+    
+    res.status(STATUS_OK).json(favoritesChar);
   } catch (error) {
     res.status(STATUS_ERROR).json({ message: error.message });
   }

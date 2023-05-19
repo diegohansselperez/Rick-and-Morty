@@ -10,11 +10,13 @@ const STATUS_ERROR = 404;
 const getCharById = async (req, res) => {
   try {
     const { id } = req.params;
+    
     const { data } = await axios.get(`${URL}/${id}`);
 
     if (!data.name) {
       throw new Error(`ID: ${id} is not faund`);
     }
+
     if (data.name) {
       const character = {
         id: data.id,

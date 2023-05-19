@@ -3,52 +3,20 @@ import {
   REMOVE_FAV,
   ORDER,
   FILTER,
-  REMOVE_CHARACTER,
-  ADD_CHARACTERS,
-  SEARCH_CHARACTER,
 } from "./types";
 
 const initialState = {
-  allCharactersOrigin: [],
   allCharacters: [],
   myFavorites: [],
-  myFavoritesOrigin: [],
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SEARCH_CHARACTER:
-      return {
-        ...state,
-        allCharacters: [...state.allCharacters,action.payload],
-      };
-
-    case ADD_CHARACTERS:
-      if (Array.isArray(action.payload)) {
-        return {
-          ...state,
-          allCharactersOrigin: [...action.payload],
-          allCharacters: [...action.payload],
-        };
-      }
-      break;
-      
-      case REMOVE_CHARACTER:
-      const newCharacter = state.myFavoritesOrigin.filter(
-        (ch) => ch.id !== action.payload
-      );
-      return {
-        ...state,
-        myFavorites: newCharacter,
-        myFavoritesOrigin: newCharacter,
-      };
-      
-/********************* Reducer para la parte de Favorites ****************************/
     case ADD_FAV:
       return {
         ...state,
-        myFavorites: [...state, state.myFavoritesOrigin, action.payload],
-        myFavoritesOrigin: [...state, state.myFavoritesOrigin, action.payload],
+       myFavorites: action.payload,
+       allCharacters: action.payload
       };
 
     case REMOVE_FAV:
@@ -73,7 +41,7 @@ const rootReducer = (state = initialState, action) => {
           : state.allCharacters.sort((a, b) => b.id - a.id);
       return {
         ...state,
-        myFavorites: newOrder,
+        myFavorites: [...newOrder],
       };
 
     default:

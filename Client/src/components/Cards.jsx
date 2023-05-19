@@ -3,10 +3,10 @@ import Card from "./Card";
 
 function Cards({ characters, onClose }) {
   const persRick = characters.map(
-    ({ name, status, species, id, origin, image, gender }, index) => {
+    ({ name, status, species, id, origin, image, gender }) => {
       return (
         <Card
-          key={index}
+          key={id}
           name={name}
           status={status}
           species={species}
