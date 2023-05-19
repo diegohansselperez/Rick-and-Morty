@@ -4,7 +4,6 @@ import {
   filterCards,
   orderCards,
   removeFav,
-  resetFavorites,
 } from "../redux/actions";
 import style from "../styles/Favorite.module.css";
 
@@ -31,9 +30,6 @@ export default function Favorites(props) {
     dispatch(filterCards(value));
   };
 
-  const handleReset = () => {
-    dispatch(resetFavorites());
-  };
 
   return (
     <div className={style.containerFav}>
@@ -56,9 +52,6 @@ export default function Favorites(props) {
           <option value="Genderless">Sin Genero</option>
           <option value="unknown">Desconocido</option>
         </select>
-        <button type="reset" onClick={handleReset}>
-          Resetear
-        </button>{" "}
       </div>
       <main >
         {" "}

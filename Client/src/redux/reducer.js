@@ -1,17 +1,53 @@
-import { ADD_FAV, REMOVE_FAV, ORDER, FILTER, RESET } from "./types";
+import {
+  ADD_FAV,
+  REMOVE_FAV,
+  ORDER,
+  FILTER,
+  REMOVE_CHARACTER,
+  ADD_CHARACTERS,
+  SEARCH_CHARACTER,
+} from "./types";
 
 const initialState = {
+  allCharactersOrigin: [],
   allCharacters: [],
   myFavorites: [],
+  myFavoritesOrigin: [],
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SEARCH_CHARACTER:
+      return {
+        ...state,
+        allCharacters: [...state.allCharacters,action.payload],
+      };
+
+    case ADD_CHARACTERS:
+      if (Array.isArray(action.payload)) {
+        return {
+          ...state,
+          allCharactersOrigin: [...action.payload],
+          allCharacters: [...action.payload],
+        };
+      }
+      break;
+      
+      case REMOVE_CHARACTER:
+      const newCharacter = state.myFavoritesOrigin.filter(
+        (ch) => ch.id !== action.payload
+      );
+      return {
+        ...state,
+        myFavorites: newCharacter,
+        myFavoritesOrigin: newCharacter,
+      };
+/********************* Reducer para la parte de Favorites ****************************/
     case ADD_FAV:
       return {
         ...state,
-        myFavorites: action.payload,
-        allCharacters: action.payload,
+        myFavorites: [...state, state.myFavoritesOrigin, action.payload],
+        myFavoritesOrigin: [...state, state.myFavoritesOrigin, action.payload],
       };
 
     case REMOVE_FAV:
@@ -21,7 +57,9 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case FILTER:
-      const chartFilters = state.allCharacters.filter((element) => element.gender === action.payload );
+      const chartFilters = state.allCharacters.filter(
+        (element) => element.gender === action.payload
+      );
       return {
         ...state,
         myFavorites: chartFilters,
@@ -36,9 +74,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         myFavorites: newOrder,
       };
-
-    case RESET:
-      return { ...state, myFavorites: []};
 
     default:
       return state;

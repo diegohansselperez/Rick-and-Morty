@@ -1,6 +1,26 @@
-import { ADD_FAV, REMOVE_FAV, ORDER, FILTER, RESET } from "./types";
+import { ADD_FAV, REMOVE_FAV, ORDER, FILTER,REMOVE_CHARACTER ,ADD_CHARACTERS, SEARCH_CHARACTER } from "./types";
 
 import axios from "axios";
+
+export function addCharacters(characters) {
+  return {
+    type: ADD_CHARACTERS,
+    payload: characters,
+  };
+}
+export function searchCharacter(character) {
+  return {
+    type: SEARCH_CHARACTER,
+    payload: character,
+  };
+}
+
+export function removeCharacter(id) {
+  return {
+    type: REMOVE_CHARACTER,
+    payload: id,
+  };
+}
 
 export function addFav(character) {
   const entrepoint = "http://localhost:3001/rickandmorty/favorite";
@@ -52,8 +72,3 @@ export function orderCards(id) {
   };
 }
 
-export function resetFavorites() {
-  return {
-    type: RESET,
-  };
-}

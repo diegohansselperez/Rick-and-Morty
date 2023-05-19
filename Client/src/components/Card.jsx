@@ -16,10 +16,9 @@ function Card(props) {
   const dispatch = useDispatch();
 
   const handleFavorite = () => {
-    if (isFav) { 
+    if (isFav) {
       setIsFav(false);
       dispatch(removeFav(id));
-     
     } else {
       dispatch(addFav(props));
       setIsFav(true);
@@ -28,11 +27,16 @@ function Card(props) {
 
   useEffect(() => {
     myFavorites.forEach((fav) => {
-      if(fav.id === id) {
+      if (fav.id === id) {
         setIsFav(true);
       }
-    })
+    });
   }, [myFavorites, id]);
+
+  function superClouse() {
+    onClose(id);
+    dispatch(removeFav(id));
+  }
 
   return (
     <div className={style.card} key={id}>
@@ -47,7 +51,7 @@ function Card(props) {
             🤍
           </button>
         )}
-        <button className={style.btnDelete} onClick={() => onClose(id)}>
+        <button className={style.btnDelete} onClick={() => superClouse}>
           X
         </button>
       </div>
