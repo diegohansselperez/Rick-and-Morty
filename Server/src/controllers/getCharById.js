@@ -4,13 +4,12 @@ const URL = "https://rickandmortyapi.com/api/character";
 
 const STATUS_OK = 200;
 const STATUS_ERROR = 404;
-// const EMAIL_LOGIN = "diegohansselp24@gmail.com";
-// const PASSWORD_LOGIN = "@solorick24";
+
 
 const getCharById = async (req, res) => {
   try {
     const { id } = req.params;
-    
+
     const { data } = await axios.get(`${URL}/${id}`);
 
     if (!data.name) {

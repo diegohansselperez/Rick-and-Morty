@@ -8,8 +8,7 @@ import Form from "./components/Form.jsx";
 import Favorites from "./components/Favorites.jsx";
 
 import axios from "axios";
-//import { useSelector } from "react-redux";
-//import { addCharacters, searchCharacter } from "./redux/actions";
+
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -17,7 +16,7 @@ function App() {
 
   const location = useLocation();
 
- // const { allCharacters } = useSelector((state) => state);
+
 
   const navigate = useNavigate();
 
@@ -67,8 +66,7 @@ function App() {
 
   const onClose = (id) => {
     setCharacters(characters.filter((pers) => pers.id !== id));
-    // const filterCharacters = allCharacters.filter((char) => char.id !== id)
-    // dispatch(addCharacters(filterCharacters))
+   
   };
 
   //creamos una condicion, si pathname es diferente a "/" entonces que muestre el Nav, en caso contrario que siga con routes y recargue el Form como principal.
