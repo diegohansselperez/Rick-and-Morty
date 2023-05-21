@@ -1,27 +1,24 @@
-const { EMAIL_LOGIN, PASSWORD_LOGIN } = require("../utils/users");
-// const EMAIL_LOGIN = "diegohansselp24@gmail.com";
-// const PASSWORD_LOGIN = "@solorick24";
+const { User } = require("../DB_connection");
 
-const STATUS_OK = 200;
-const STATUS_ERROR = 404;
-
-const login = (req, res) => {
-  const { password, email } = req.query;
-
+const login = async (req, res) => {
   try {
-    if (!password || !email) {
-      return res
-        .status(STATUS_ERROR)
-        .json({ message: "please enter a password and email address" });
-    }
+    const { email, password } = req.query;
 
-    if (password === PASSWORD_LOGIN && email === EMAIL_LOGIN) {
-      res.status(STATUS_OK).json({ access: true });
-    } else {
-      res.status(STATUS_OK).json({ access: false });
-    }
+    if (!email || !password) return res.status(400).send("Faltan datos");
+
+    const user = await User.findOne({
+      where: {
+        email: email,
+      },
+    });
+
+    if (!user) return res.status(404).send("Usuario no encontrado");
+
+    return user.password === password
+      ? res.status(200).json({ access: true })
+      : res.status(403).send("Password incorrect");
   } catch (error) {
-    res.status(STATUS_ERROR).json(error);
+    res.status(500).json({ error: error.message });
   }
 };
 

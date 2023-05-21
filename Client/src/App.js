@@ -9,14 +9,11 @@ import Favorites from "./components/Favorites.jsx";
 
 import axios from "axios";
 
-
 function App() {
   const [characters, setCharacters] = useState([]);
   const [access, setAccess] = useState(false);
 
   const location = useLocation();
-
-
 
   const navigate = useNavigate();
 
@@ -28,7 +25,7 @@ function App() {
 
       console.log("onSearch", data);
 
-      if(data.name && !characters.find((person) => person.id === data.id)) {
+      if (data.name && !characters.find((person) => person.id === data.id)) {
         setCharacters((oldCharts) => [...oldCharts, data]);
       } else {
         if (characters.find((person) => person.id === data.id)) {
@@ -66,7 +63,6 @@ function App() {
 
   const onClose = (id) => {
     setCharacters(characters.filter((pers) => pers.id !== id));
-   
   };
 
   //creamos una condicion, si pathname es diferente a "/" entonces que muestre el Nav, en caso contrario que siga con routes y recargue el Form como principal.

@@ -27,7 +27,7 @@ export function removeFav(id) {
     try {
       const { data } = await axios.delete(`${entrepoint}/${id}`);
       // if (!data.length) throw Error("No hay favoritos removidos");
-      console.log("removeFav", data);
+     
 
       dispatch({
         type: REMOVE_FAV,

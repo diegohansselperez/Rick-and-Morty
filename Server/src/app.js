@@ -4,7 +4,7 @@ const app = express();
 const morgan = require("morgan");
 
 app.use(express.json());
-
+app.use(morgan("dev"));
 app.use(nocache());
 
 const router = require("./routes/index");
@@ -22,7 +22,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(morgan("dev"));
+
 
 app.use("/rickandmorty", router);
 
